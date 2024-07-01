@@ -243,7 +243,7 @@ const ShippingPage = ({ handleNext, profile }) => {
                         fullWidth
                         multiline
                         label="Zip / Postal code"
-                        type='number'
+                        type='text'
                         value={pinCode}
                         error={pinCodeError}
                         helperText={pinCodeError && 'Pin Code should be a 6-digit number'}
@@ -276,7 +276,7 @@ const ShippingPage = ({ handleNext, profile }) => {
                       <TextField
                         fullWidth
                         label="Phone number"
-                        type='number'
+                        type='text'
                         value={phoneNo}
                         error={phoneNoError}
                         helperText={phoneNoError && 'Phone Number should be a 10-digit number'}
