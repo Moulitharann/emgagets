@@ -14,7 +14,7 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const { productData, responseProducts, error } = useSelector((state) => state.user);
+  const {   productData, responseProducts, error } = useSelector((state) => state.user);
 
   const [showNetworkError, setShowNetworkError] = useState(false);
 
@@ -73,19 +73,19 @@ const Home = () => {
           ) : (
             <>
               <Component>
-                <LeftComponent>
+                {/* <LeftComponent>
                   <Slide products={productData} title="Top Selection" />
-                </LeftComponent>
+                </LeftComponent> */}
 
-                <RightComponent>
+                {/* <RightComponent>
                   <img src={adURL} alt="" style={{ width: 217 }} />
-                </RightComponent>
+                </RightComponent> */}
               </Component>
 
-              <Slide products={productData} title="Deals of the Day" />
-              <Slide products={productData} title="Suggested Items" />
+              <Slide products={productData} title="Products" />
+              {/* <Slide products={productData} title="Suggested Items" />
               <Slide products={productData} title="Discounts for You" />
-              <Slide products={productData} title="Recommended Items" />
+              <Slide products={productData} title="Recommended Items" /> */}
             </>
           )}
         </>

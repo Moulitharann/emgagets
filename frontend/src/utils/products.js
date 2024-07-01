@@ -272,9 +272,7 @@ export const productDataList = [
 ];
 
 export const bannerData = [
-  { _id: 1, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/8464e4d9a75b909a.jpg?q=50' },
-  { _id: 2, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/a5320d3f852657e8.jpg?q=50' },
-  { _id: 3, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/5df65ad101e18dbf.jpg?q=50' },
-  { _id: 4, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/8a89ee09acc1a9e5.jpg?q=50' },
-  { _id: 5, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/ed12b7707a04473c.jpg?q=50' },
-]
+  { _id: 1, url: 'https://img.freepik.com/free-vector/realistic-cyber-monday-sale-banner_52683-142053.jpg?t=st=1719847722~exp=1719851322~hmac=213e6b27561e4ab9b516560b37a250f2b428763f180721e145a94b1e43a6b4fd&w=996' },
+  { _id: 2, url: 'https://img.freepik.com/free-psd/black-friday-super-sale-facebook-cover-template_106176-1544.jpg?w=1380&t=st=1719847748~exp=1719848348~hmac=6a66956f777dc86d9374208c52f62bdecc5fcf3edf9a674e5aa5abc64bb39641' },
+  { _id: 3, url: 'https://img.freepik.com/free-vector/flat-black-friday-twitter-cover-template_23-2149103019.jpg?t=st=1719846878~exp=1719850478~hmac=f06c4fed2d51bf65db52ee0ae95c7bc16ec0f54f57baa47fddb7932341777b61&w=1380' },
+  ]

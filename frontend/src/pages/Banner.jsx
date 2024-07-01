@@ -5,6 +5,7 @@ import { bannerData } from '../utils/products';
 
 const Banner = () => {
     return (
+        <div >
         <Carousel
             swipeable={false}
             draggable={false}
@@ -24,11 +25,11 @@ const Banner = () => {
                 <Image src={image.url} alt={image.alt} key={image._id} />
             ))}
         </Carousel>
+        </div>
     );
 };
 
 export default Banner;
-
 
 const responsive = {
     desktop: {
@@ -47,9 +48,9 @@ const responsive = {
 
 const Image = styled('img')(({ theme }) => ({
     width: '100%',
-    height: 230,
+    height: 180,
+    objectFit: 'cover',
     [theme.breakpoints.down('sm')]: {
-        objectFit: 'cover',
-        height: 180,
+        height: 150,
     },
 }));

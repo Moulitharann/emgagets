@@ -47,7 +47,7 @@ const SellerDashboard = () => {
         <>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar open={open} position='absolute' sx={{ backgroundColor: "#4d1c9c" }}>
+                <AppBar open={open} position='absolute' sx={{ backgroundColor: "#454679" }}>
                     <Toolbar sx={{ pr: '24px' }}>
                         <IconButton
                             edge="start"
@@ -91,7 +91,7 @@ const SellerDashboard = () => {
                             >
                                 <LocalMallIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
 
-                                EM gagets
+                                EM gadgets
                             </NavLogo>
                         </Typography>
 

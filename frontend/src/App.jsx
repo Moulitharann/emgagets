@@ -38,11 +38,11 @@ const App = () => {
           <Navbar />
 
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Home" element={<Home />} />
+            {/* <Route path="/" element={<Home />} /> */}
+            {/* <Route path="/Home" element={<Home />} /> */}
             <Route path='*' element={<Navigate to="/" />} />
 
-            <Route path="/Products" element={<Products productData={productData} />} />
+            <Route path="/" element={<Products productData={productData} />} />
 
             <Route path="/product/view/:id" element={<ViewProduct />} />
 
@@ -62,11 +62,11 @@ const App = () => {
           <Navbar />
 
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Home" element={<Home />} />
+            {/* <Route path="/" element={<Home />} />
+            <Route path="/Home" element={<Home />} /> */}
             <Route path='*' element={<Navigate to="/" />} />
 
-            <Route path="/Products" element={<Products productData={productData} />} />
+            <Route path="/" element={<Products productData={productData} />} />
 
             <Route path="/product/view/:id" element={<ViewProduct />} />
 

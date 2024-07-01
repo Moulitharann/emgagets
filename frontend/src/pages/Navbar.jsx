@@ -90,7 +90,7 @@ const Navbar = () => {
     };
 
     return (
-        <AppBar position="sticky" sx={{ backgroundColor: "#1a237e" }}>
+        <AppBar position="sticky" sx={{ backgroundColor: "#454679" }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
 
@@ -124,17 +124,9 @@ const Navbar = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            <NavLogo
-                                to="top"
-                                activeClass="active"
-                                spy={true}
-                                smooth={true}
-                                offset={-70}
-                                duration={500}
-                                onClick={homeHandler}
-                            >
+                            
                                 EM gagets
-                            </NavLogo>
+                            
                         </Typography>
                     </HomeContainer>
 
