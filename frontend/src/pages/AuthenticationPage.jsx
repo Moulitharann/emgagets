@@ -11,15 +11,13 @@ import Popup from '../components/Popup';
 
 const AuthenticationPage = ({ mode, role }) => {
 
-    const bgpic = "https://images.pexels.com/photos/1121097/pexels-photo-1121097.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const { status, currentUser, response, error, currentRole } = useSelector(state => state.user);
 
-    const { status, currentUser, response, error, currentRole } = useSelector(state => state.user);;
-
-    const [toggle, setToggle] = useState(false)
-    const [loader, setLoader] = useState(false)
+    const [toggle, setToggle] = useState(false);
+    const [loader, setLoader] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [message, setMessage] = useState("");
 
@@ -56,20 +54,17 @@ const AuthenticationPage = ({ mode, role }) => {
                     return;
                 }
 
-                const sellerFields = { name, email, password, role, shopName }
-                dispatch(authUser(sellerFields, role, mode))
+                const sellerFields = { name, email, password, role, shopName };
+                dispatch(authUser(sellerFields, role, mode));
+            } else {
+                const customerFields = { name, email, password, role };
+                dispatch(authUser(customerFields, role, mode));
             }
-            else {
-                const customerFields = { name, email, password, role }
-
-                dispatch(authUser(customerFields, role, mode))
-            }
+        } else if (mode === "Login") {
+            const fields = { email, password };
+            dispatch(authUser(fields, role, mode));
         }
-        else if (mode === "Login") {
-            const fields = { email, password }
-            dispatch(authUser(fields, role, mode))
-        }
-        setLoader(true)
+        setLoader(true);
     };
 
     const handleInputChange = (event) => {
@@ -83,16 +78,14 @@ const AuthenticationPage = ({ mode, role }) => {
     useEffect(() => {
         if (status === 'success' && currentRole !== null) {
             navigate('/');
-        }
-        else if (status === 'failed') {
-            setMessage(response)
-            setShowPopup(true)
-            setLoader(false)
-        }
-        else if (status === 'error') {
-            setLoader(false)
-            setMessage("Network Error")
-            setShowPopup(true)
+        } else if (status === 'failed') {
+            setMessage(response);
+            setShowPopup(true);
+            setLoader(false);
+        } else if (status === 'error') {
+            setLoader(false);
+            setMessage("Network Error");
+            setShowPopup(true);
         }
     }, [status, currentUser, currentRole, navigate, error, response]);
 
@@ -100,7 +93,19 @@ const AuthenticationPage = ({ mode, role }) => {
         <>
             <Grid container component="main" sx={{ height: '100vh' }}>
                 <CssBaseline />
-                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                <Grid
+                    container
+                    item
+                    xs={12}
+                    sm={8}
+                    md={5}
+                    component={Paper}
+                    elevation={6}
+                    square
+                    alignItems="center"
+                    justifyContent="center"
+                    sx={{ margin: 'auto' }}
+                >
                     <Box
                         sx={{
                             my: 8,
@@ -108,6 +113,9 @@ const AuthenticationPage = ({ mode, role }) => {
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
+                            backgroundColor: '#f7f9fc',
+                            padding: '2rem',
+                            borderRadius: '8px',
                         }}
                     >
                         <StyledTypography>
@@ -115,22 +123,22 @@ const AuthenticationPage = ({ mode, role }) => {
                         </StyledTypography>
 
                         {role === "Seller" && mode === "Register" &&
-                            <Typography variant="h7">
-                                Create your own shop by registering as an seller.
+                            <Typography variant="h7" align="center" sx={{ mb: 2 }}>
+                                Create your own shop by registering as a seller.
                                 <br />
-                                You will be able to add products and sell them.
+                                You will be able to add products and sell them on EM gagets.
                             </Typography>
                         }
 
                         {role === "Customer" && mode === "Register" &&
-                            <Typography variant="h7">
-                                Register now to explore and buy products.
+                            <Typography variant="h7" align="center" sx={{ mb: 2 }}>
+                                Register now to explore and buy the best gadgets.
                             </Typography>
                         }
 
                         {mode === "Login" &&
-                            <Typography variant="h7">
-                                Welcome back! Please enter your details
+                            <Typography variant="h7" align="center" sx={{ mb: 2 }}>
+                                Welcome back! Please enter your details to continue.
                             </Typography>
                         }
 
@@ -145,7 +153,7 @@ const AuthenticationPage = ({ mode, role }) => {
                                     name="userName"
                                     autoComplete="name"
                                     autoFocus
-                                    variant="standard"
+                                    variant="outlined"
                                     error={userNameError}
                                     helperText={userNameError && 'Name is required'}
                                     onChange={handleInputChange}
@@ -160,7 +168,7 @@ const AuthenticationPage = ({ mode, role }) => {
                                     label="Create your shop name"
                                     name="shopName"
                                     autoComplete="off"
-                                    variant="standard"
+                                    variant="outlined"
                                     error={shopNameError}
                                     helperText={shopNameError && 'Shop name is required'}
                                     onChange={handleInputChange}
@@ -174,7 +182,7 @@ const AuthenticationPage = ({ mode, role }) => {
                                 label="Enter your email"
                                 name="email"
                                 autoComplete="email"
-                                variant="standard"
+                                variant="outlined"
                                 error={emailError}
                                 helperText={emailError && 'Email is required'}
                                 onChange={handleInputChange}
@@ -188,7 +196,7 @@ const AuthenticationPage = ({ mode, role }) => {
                                 type={toggle ? 'text' : 'password'}
                                 id="password"
                                 autoComplete="current-password"
-                                variant="standard"
+                                variant="outlined"
                                 error={passwordError}
                                 helperText={passwordError && 'Password is required'}
                                 onChange={handleInputChange}
@@ -221,7 +229,7 @@ const AuthenticationPage = ({ mode, role }) => {
                                 {loader ? <CircularProgress size={24} color="inherit" /> : mode}
                             </LightPurpleButton>
                             <Grid container>
-                                <Grid>
+                                <Grid item>
                                     {mode === "Register" ?
                                         "Already have an account?"
                                         :
@@ -243,20 +251,6 @@ const AuthenticationPage = ({ mode, role }) => {
                         </Box>
                     </Box>
                 </Grid>
-                <Grid
-                    item
-                    xs={false}
-                    sm={4}
-                    md={7}
-                    sx={{
-                        backgroundImage: `url(${bgpic})`,
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: (t) =>
-                            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                />
             </Grid>
             <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
         </>
@@ -273,10 +267,11 @@ const StyledLink = styled(Link)`
 
 const StyledTypography = styled.h4`
     margin: 0;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 2.125rem;
     line-height: 1.235;
     letter-spacing: 0.00735em;
     color: #2c2143;
     margin-bottom: 16px;
+    text-transform: capitalize;
 `;

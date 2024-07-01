@@ -30,7 +30,7 @@ const Navbar = () => {
 
     const totalQuantity = currentUser && currentUser.cartDetails && currentUser.cartDetails.reduce((total, item) => total + item.quantity, 0);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     React.useEffect(() => {
@@ -38,7 +38,7 @@ const Navbar = () => {
             console.log(currentUser);
             dispatch(updateCustomer(currentUser, currentUser._id));
         }
-    }, [currentRole, currentUser, dispatch])
+    }, [currentRole, currentUser, dispatch]);
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -86,12 +86,12 @@ const Navbar = () => {
     };
 
     const homeHandler = () => {
-        navigate("/")
+        navigate("/");
     };
 
     return (
-        <AppBar position="sticky">
-            <Container maxWidth="xl" sx={{ backgroundColor: "#4d1c9c" }}>
+        <AppBar position="sticky" sx={{ backgroundColor: "#1a237e" }}>
+            <Container maxWidth="xl">
                 <Toolbar disableGutters>
 
                     {/* MOBILE */}
@@ -133,7 +133,7 @@ const Navbar = () => {
                                 duration={500}
                                 onClick={homeHandler}
                             >
-                                SHOPCART
+                                EM gagets
                             </NavLogo>
                         </Typography>
                     </HomeContainer>
@@ -171,14 +171,14 @@ const Navbar = () => {
                                     }}
                                 >
                                     <MenuItem onClick={() => {
-                                        navigate("/Customerlogin")
-                                        handleCloseNavMenu()
+                                        navigate("/Customerlogin");
+                                        handleCloseNavMenu();
                                     }}>
                                         <Typography textAlign="center">Sign in as customer</Typography>
                                     </MenuItem>
                                     <MenuItem onClick={() => {
-                                        navigate("/Sellerlogin")
-                                        handleCloseNavMenu()
+                                        navigate("/Sellerlogin");
+                                        handleCloseNavMenu();
                                     }}>
                                         <Typography textAlign="center">Sign in as seller</Typography>
                                     </MenuItem>
@@ -213,20 +213,18 @@ const Navbar = () => {
                                 onClick={homeHandler}
                             >
                                 <LocalMallIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-
-                                SHOPCART
+                                EM gagets
                             </NavLogo>
                         </Typography>
                     </HomeContainer>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, }}>
-                        <Search />
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <ProductsMenu dropName="Categories" />
                         <ProductsMenu dropName="Products" />
                     </Box>
 
                     {currentRole === null &&
-                        <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, }}>
+                        <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
                             <Button
                                 onClick={handleOpenSigninMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -264,6 +262,10 @@ const Navbar = () => {
                             </Menu>
                         </Box>
                     }
+
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
+                        <Search />
+                    </Box>
 
                     {/* BOTH */}
 
@@ -351,14 +353,14 @@ const Navbar = () => {
                     <Cart setIsCartOpen={setIsCartOpen} />
                 </Drawer>
             }
-        </AppBar >
+        </AppBar>
     );
 }
 export default Navbar;
 
 const HomeContainer = styled.div`
   display: flex;
-  cursor:pointer;
+  cursor: pointer;
 `;
 
 const styles = {
